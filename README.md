@@ -40,55 +40,58 @@
 ---
 
 ## 📁 Структура проекта
+
+```text
 Site/
-├── Content/ # Основные CSS-файлы
-│ ├── Main.css # Глобальные стили и адаптивность
-│ ├── selectric.css # Стили выпадающих списков
-│ └── ...
-├── CSS/ # Дополнительные CSS
-│ ├── Authorization.css
-│ ├── preload.css
-│ └── ...
-├── JS/ # Скрипты
-│ ├── map-polygons.js # Полигоны районов Москвы
-│ ├── chosen.jquery.js # Chosen-селекты
-│ └── ...
-├── Logo/ # Логотипы, маркеры, иконки
-├── photo_obj/ # Фотографии объектов (по подпапкам)
-│ ├── sportcomplex1/
-│ ├── bassein2/
-│ ├── ledoviy/
-│ ├── stadion4/
-│ ├── fok5/
-│ └── sportploshad6/
-├── LocalData.cs # Локальное хранилище данных
-├── Mosedo.Master # Мастер-страница
+├── Content/                    # Основные CSS-файлы
+│   ├── Main.css                # Глобальные стили и адаптивность
+│   ├── selectric.css           # Стили выпадающих списков
+│   └── ...
+├── CSS/                        # Дополнительные CSS
+│   ├── Authorization.css
+│   ├── preload.css
+│   └── ...
+├── JS/                         # Скрипты
+│   ├── map-polygons.js         # Полигоны районов Москвы
+│   ├── chosen.jquery.js        # Chosen-селекты
+│   └── ...
+├── Logo/                       # Логотипы, маркеры, иконки
+├── photo_obj/                  # Фотографии объектов (по подпапкам)
+│   ├── sportcomplex1/
+│   ├── bassein2/
+│   ├── ledoviy/
+│   ├── stadion4/
+│   ├── fok5/
+│   └── sportploshad6/
+├── LocalData.cs                # Локальное хранилище данных
+├── Mosedo.Master               # Мастер-страница
 ├── Mosedo.master.cs
-├── Default.aspx # Карта объектов
+├── Default.aspx                # Карта объектов
 ├── Default.aspx.cs
-├── One_page.aspx # Карточка объекта
+├── One_page.aspx               # Карточка объекта
 ├── One_page.aspx.cs
-├── Contact.aspx # Список объектов
+├── Contact.aspx                # Список объектов
 ├── Contact.aspx.cs
-├── Documents.aspx # Документы
+├── Documents.aspx              # Документы
 ├── Documents.aspx.cs
-├── Budget.aspx # Бюджет / Статистика
+├── Budget.aspx                 # Бюджет / Статистика
 ├── Budget.aspx.cs
-├── Otchet.aspx # Отчёты (v1)
-├── Otchet2.aspx # Отчёты (v2)
-├── Infographics.aspx # Инфографика
+├── Otchet.aspx                 # Отчёты (v1)
+├── Otchet2.aspx                # Отчёты (v2)
+├── Infographics.aspx           # Инфографика
 ├── Infographics.aspx.cs
-├── Feedback.aspx # Обратная связь
+├── Feedback.aspx               # Обратная связь
 ├── Feedback.aspx.cs
-├── Users.aspx # Пользователи
+├── Users.aspx                  # Пользователи
 ├── Users.aspx.cs
-├── Authorization.aspx # Вход
+├── Authorization.aspx          # Вход
 ├── Authorization.aspx.cs
-├── Hub.aspx # Хаб (выбор продукта)
+├── Hub.aspx                    # Хаб (выбор продукта)
 ├── Hub.aspx.cs
-├── Error404.aspx # 404
-├── FlaseError.aspx # Ошибка
+├── Error404.aspx               # 404
+├── FlaseError.aspx             # Ошибка
 └── Web.config
+```
 
 ## 👤 Тестовые учётные записи
 
