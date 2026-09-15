@@ -1,51 +1,32 @@
 # === Visual Studio ===
 .vs/
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
-*.userprefs
-
-# === Build results ===
 [Bb]in/
 [Oo]bj/
-[Ll]og/
-[Ll]ogs/
+*.user
+*.suo
 
-# === NuGet ===
-*.nupkg
+# === NuGet (ВАЖНО!) ===
 packages/
-!packages/repositories.config
+*.nupkg
 *.nuspec
 
-# === Node (если есть) ===
+# === Node ===
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
-# === Тестовые данные / временные ===
+# === Большие данные (проверьте, нужны ли на GitHub) ===
+Site/photo_zone/
+Site/present_obj/
+Site/download/
+Site/PriceList/
+Site/photo_ob/
+
+# === Прочее ===
 *.tmp
 *.log
 *.bak
-Uploads/
-
-# === OS ===
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# === IDE ===
 .vscode/
 .idea/
-*.swp
-*~
-
-# === Фото объектов (опционально) ===
-# Если фото тяжёлые — можно исключить:
-# photo_obj/
-
-# === Прочее ===
 *.cache
 *.zip
 *.rar
+
