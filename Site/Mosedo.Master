@@ -1,0 +1,433 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Mosedo.master.cs" Inherits="Site.Mosedo" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link type="text/css" rel="stylesheet" href="Content/Main.css" />
+    <link rel="stylesheet" href="Content/selectric.css" />
+    <meta charset="utf-8" />
+    <meta http-equiv="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+
+    <%-- Алерты --%>
+    <script src="JS/sweetalert2.js"></script>
+    <link href="JS/sweetalert2.css" rel="stylesheet" />
+
+    <%-- Инфографика --%>
+    <script src="JS/chart.3.7.0.min.js"></script>
+    <script src="JS/chart.plugin.datalabels.2.0.0.min.js"></script>
+    <link href="CSS/preload.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        function ClickNumberDoc(element) {
+            var numberdoc = element.textContent;
+            var area = document.createElement('textarea');
+            document.body.appendChild(area);
+            area.value = numberdoc;
+            area.select();
+            document.execCommand("copy");
+            document.body.removeChild(area);
+            swal({
+                title: "Уведомление",
+                text: "Скопирован текст: " + numberdoc,
+                position: "bottom",
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                showConfirmButton: false,
+                showCancelButton: false,
+                background: null,
+                backdrop: null,
+                timer: 1500
+            });
+        }
+
+        function ClickRow(element) {
+            var nameobject = element.cells[1].textContent;
+            window.location.href = '/One_page.aspx?map=' + nameobject;
+        }
+
+        function ClickRow2(element) {
+            var nameobject = element.cells[0].textContent;
+            window.location.href = '/One_page.aspx?map=' + nameobject;
+        }
+
+        function ClickOtch(element) {
+            window.location.href = '/One_page.aspx?map=' + element.textContent;
+        }
+
+        function ClickDoc() {
+            window.location.href = '/FlaseError.aspx';
+        }
+
+        function ClickRow_aut(element) {
+            alert("dsd")
+            var id_user = element.cells[0].textContent;
+            window.location.href = '/Authorization.aspx?id_user=' + id_user;
+        }
+
+        function openImageWindow(src) {
+            var image = new Image();
+            image.src = src;
+            window.open(src, "Image", "width=1200,height=800");
+        }
+
+        function ClickCell3(name) {
+            var nameobject = name;
+            window.location.href = '/One_page.aspx?map=' + nameobject;
+        }
+    </script>
+
+    <script src="JS/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/Slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="/Slick/slick-theme.css" />
+    <script src="JS/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="/Slick/slick.js"></script>
+    <script src="/swipebox/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/swipebox/jquery.fancybox.min.css">
+    <script src="/Scripts/jquery.selectric.min.js"></script>
+
+    <script>
+        $(function () {
+            $('.select').selectric({ nativeOnMobile: true });
+        });
+
+        $(document).ready(function () {
+            $(".selectric-input").attr('readonly', 'readonly');
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("div[id$='dosiee']").click(function () {
+                $('div.personal_area').toggleClass('personal_area2');
+            });
+            $("div[class$='profile']").click(function () {
+                $('div.personal_areaa').toggleClass('personal_areaa2');
+            });
+            $("div[class$='redact']").click(function () {
+                $('div.redact_area').toggleClass('redact_area2');
+            });
+        });
+
+        $(document).mouseup(function (e) {
+            var container = $("div.personal_area");
+            if (container.has(e.target).length === 0) container.removeClass('personal_area2');
+        });
+
+        $(document).mouseup(function (e) {
+            var container = $("div.personal_areaa");
+            if (container.has(e.target).length === 0) container.removeClass('personal_areaa2');
+        });
+
+        $(document).mouseup(function (e) {
+            var container = $("div.redact_area");
+            if (container.has(e.target).length === 0) container.removeClass('redact_area2');
+        });
+    </script>
+
+    <link href="JS/chosen.css" rel="stylesheet" />
+    <script src="JS/chosen.jquery.js"></script>
+
+    <script>
+        $(function () {
+            $(".ddl_test").chosen({ no_results_text: "Ничего не найдено!" });
+        });
+    </script>
+
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=0d563551-d9d1-4eaa-9017-8d8b37bc2c77&lang=ru_RU" type="text/javascript"></script>
+    <meta name="viewport" content="width=device-width" />
+    <link href="Logo/favicon-test.ico" rel="shortcut icon" type="image/x-icon" />
+    <script src="JS/jquery.mousewheel.min.js"></script>
+
+    <%-- Календарь --%>
+    <link rel="stylesheet" href="JQ-UI/jquery-ui.min.css">
+    <script src="JQ-UI/jquery-ui.min.js"></script>
+    <script src="JS/datepicker-ru.js"></script>
+    <script src="JS/jquery.mask-1.14.10.js"></script>
+
+    <%-- Enter = клик по кнопке --%>
+    <script type="text/javascript">
+        function clickButton(e, buttonid) {
+            var evt = e ? e : window.event;
+            var bt = document.getElementById(buttonid);
+            if (bt) {
+                if (evt.keyCode == 13) {
+                    bt.click();
+                    return false;
+                }
+            }
+        }
+    </script>
+
+    <title>ВЫБОР ПРОДУКТА</title>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <div class="preloader">
+        <div class="preloader__image"></div>
+    </div>
+
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" EnablePageMethods="true" runat="server"></asp:ScriptManager>
+
+        <div class="page">
+                        <%-- ХЕДЕР --%>
+            <header>
+                <div id="kos2" class="header2">
+                    <div class="btn" style="cursor: pointer;" id="menu">
+                        <div class="menu">
+                            <asp:Panel ID="PanelBurger" runat="server" CssClass="burger">
+                                <span></span>
+                            </asp:Panel>
+
+                            <script>
+                                document.querySelector('.burger').addEventListener('click', function () {
+                                    document.querySelector('.burger span').classList.toggle('active');
+                                    document.querySelector('.submenu').classList.toggle('animate');
+                                })
+                            </script>
+
+                            <div class="submenu">
+                                <ul class="submenu1">
+                                    <li class="li_name">Система досье</li>
+                                    <li class="li_name"><a href="Default.aspx" style="color: white">Карта</a></li>
+                                    <li class="li_name"><a href="Contact.aspx" style="color: white">Список</a></li>
+                                    <li class="li_name"><a href="Otchet2.aspx" style="color: white">Отчёты</a></li>
+                                    <li class="li_name"><a href="Feedback.aspx" style="color: white">Обратная связь</a></li>
+                                    <li class="li_name"><a href="Documents.aspx" style="color: white">Система документы</a></li>
+                                    <li class="li_name"><a href="Budget.aspx" style="color: white">Статистика</a></li>
+                                    <asp:Panel ID="Userss_Menu" Visible="false" runat="server">
+                                        <li class="li_name" style="display:none;">
+                                            <a href="Users.aspx" style="color: white">Пользователи</a>
+                                        </li>
+                                    </asp:Panel>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="header2-content">
+                        <div style="display: flex; align-items: center;">
+                            <a href="Default.aspx"></a>
+                            <div class="mossport">
+                                <a href="Hub.aspx">
+                                    <h1 style="text-transform:uppercase">ВЫБОР ПРОДУКТА</h1>
+                                </a>
+                                <h1 style="font-family:GOTHAPROREG; font-size: 10px;text-align: right;">логотип</h1>
+                            </div>
+
+                            <div class="buttons">
+                                <asp:Panel ID="Panel_dosie" style="display: flex; align-items: center" runat="server" Visible="false">
+                                    <a href="Default.aspx">
+                                        <asp:Panel runat="server" ID="Panel4" class="blob-btn" style="width: 90px">
+                                            <label style="position: relative;top: 40%; font-family: GOTHAPROREG;cursor:pointer">Карта</label>
+                                        </asp:Panel>
+                                    </a>
+
+                                    <a href="Contact.aspx">
+                                        <asp:Panel ID="Spisok" runat="server" class="blob-btn" style="width: 90px">
+                                            <label style="position: relative;top: 40%; font-family: GOTHAPROREG;cursor:pointer">Список</label>
+                                        </asp:Panel>
+                                    </a>
+
+                                    <a href="Otchet2.aspx">
+                                        <asp:Panel ID="Otch" runat="server" class="blob-btn" style="width: 90px">
+                                            <label style="position: relative;top: 40%; font-family: GOTHAPROREG;cursor:pointer">Отчёты</label>
+                                        </asp:Panel>
+                                    </a>
+
+                                    <a href="Feedback.aspx">
+                                        <asp:Panel runat="server" ID="Panel3" class="blob-btn" style="width: 135px">
+                                            <label style="position: relative;top: 40%; font-family: GOTHAPROREG;cursor:pointer">Обратная связь</label>
+                                        </asp:Panel>
+                                    </a>
+                                </asp:Panel>
+                            </div>
+
+                            <asp:Panel ID="Panel_doc" runat="server" Visible="false">
+                                <a href="Documents.aspx">
+                                    <asp:Panel runat="server" ID="Panel5" class="blob-btn" style="width: 90px">
+                                        <label style="position: relative;top: 40%; font-family: GOTHAPROREG;cursor:pointer">Документы</label>
+                                    </asp:Panel>
+                                </a>
+                            </asp:Panel>
+
+                            <asp:Panel ID="Panel_stat" runat="server" Visible="false">
+                                <a href="Budget.aspx">
+                                    <asp:Panel runat="server" ID="Panel1" class="blob-btn" style="width: 90px">
+                                        <label style="position: relative;top: 40%; font-family: GOTHAPROREG;cursor:pointer">Статистика</label>
+                                    </asp:Panel>
+                                </a>
+                            </asp:Panel>
+                        </div>
+
+                        <div id="Id_ete_search" runat="server" class="ete_search" tabindex="-1">
+                            <asp:TextBox ID="TextSearchMain" runat="server" style="max-width: 200px;" CssClass="ete" autocomplete="off" MaxLength="250" AutoPostBack="true" onkeyup="myFunctionSMain()" OnTextChanged="TextSearchMain_TextChanged"></asp:TextBox>
+                            <div class="ete_button" style="margin: auto;position: absolute;top: 20px; right: 5px;">
+                                <asp:LinkButton ID="Button_TextSearchMain" runat="server" CssClass="" OnClick="Button_TextSearchMain_Click">
+                                    <svg id="priver2" class="svg_search2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 70 70" overflow="visible" xml:space="preserve">
+                                        <g>
+                                            <path d="M27.3950043,0.3162664c-15.0238619,0-27.2056198,12.181757-27.2056198,27.2057343 s12.1817579,27.2057323,27.2057362,27.2057323c5.7772999,0,11.1351223-1.8019867,15.5392857-4.8714409l0.0032043-0.0032043 l20.1769791,20.1770935c0.3744202,0.3744125,0.9697838,0.3840179,1.3539238,0l5.4379959-5.4379959 c0.3744125-0.3744202,0.3552017-0.995285-0.0032043-1.3538094L49.7292938,43.0644875 c3.0694542-4.4073639,4.8714447-9.7653046,4.8714447-15.5424881C54.6007385,12.498023,42.4189796,0.3162664,27.3950043,0.3162664z M27.3950043,48.3263664c-11.4904442,0-20.8043633-9.3139229-20.8043633-20.8043652S15.9046755,6.7176356,27.3950043,6.7176356 s20.8043633,9.313921,20.8043633,20.8043652S38.8854485,48.3263664,27.3950043,48.3263664z"/>
+                                        </g>
+                                    </svg>
+                                </asp:LinkButton>
+                            </div>
+
+                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                <ContentTemplate>
+                                    <div class="result_search" runat="server" id="Div_search">
+                                        <asp:GridView ID="GridViewSearchMain" runat="server" GridLines="None" table-layout="fixed" CssClass="Tab_obj_search" ShowHeader="false" Visible="false" OnRowDataBound="GridViewSearchMain_RowDataBound" OnSelectedIndexChanged="GridViewSearchMain_SelectedIndexChanged">
+                                            <RowStyle CssClass="row_search" Height="45px" />
+                                            <emptydatatemplate>
+                                                <asp:Label ID="Label1" runat="server" Text="По вашему запросу ничего не найдено." Font-Bold="True"></asp:Label>
+                                            </emptydatatemplate>
+                                        </asp:GridView>
+                                    </div>
+                                </ContentTemplate>
+                                <Triggers>
+                                    <asp:AsyncPostBackTrigger ControlID="TextSearchMain" EventName="TextChanged" />
+                                </Triggers>
+                            </asp:UpdatePanel>
+                        </div>
+
+                        <script>
+                            function myFunctionSMain(parameter) {
+                                __doPostBack('<%= TextSearchMain.ClientID %>', '');
+                            }
+                        </script>
+
+                        <script>
+                            function myFunctionEte(element) {
+                                document.querySelector('.ete').classList.toggle('ete2');
+                                document.querySelector('.ete_button').classList.toggle('ete_button2');
+                                document.querySelector('.click_visible_false').style = 'display:none';
+                            }
+                        </script>
+                    </div>
+
+                    <div id="Svg_search_mini" runat="server" class="cont_svg_search">
+                        <svg id="Priver" class="svg_search click_visible_false" xmlns="http://www.w3.org/2000/svg" onclick="myFunctionEte(this)" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 70 70" overflow="visible" xml:space="preserve">
+                            <g>
+                                <path d="M27.3950043,0.3162664c-15.0238619,0-27.2056198,12.181757-27.2056198,27.2057343 s12.1817579,27.2057323,27.2057362,27.2057323c5.7772999,0,11.1351223-1.8019867,15.5392857-4.8714409l0.0032043-0.0032043 l20.1769791,20.1770935c0.3744202,0.3744125,0.9697838,0.3840179,1.3539238,0l5.4379959-5.4379959 c0.3744125-0.3744202,0.3552017-0.995285-0.0032043-1.3538094L49.7292938,43.0644875 c3.0694542-4.4073639,4.8714447-9.7653046,4.8714447-15.5424881C54.6007385,12.498023,42.4189796,0.3162664,27.3950043,0.3162664z M27.3950043,48.3263664c-11.4904442,0-20.8043633-9.3139229-20.8043633-20.8043652S15.9046755,6.7176356,27.3950043,6.7176356 s20.8043633,9.313921,20.8043633,20.8043652S38.8854485,48.3263664,27.3950043,48.3263664z"/>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="right_panel">
+                        <div id="Profile_block" runat="server" class="profile">
+                            <svg display="none">
+                                <symbol id="svg-top5" viewBox="0 0 50 50">
+                                    <g>
+                                        <path d="M26.53,11.05a7.84,7.84,0,1,0,6.16,6.15A7.84,7.84,0,0,0,26.53,11.05Zm4.56,9a6,6,0,0,1-4.74,4.44,6.15,6.15,0,0,1-7.58-5.73h0A6.05,6.05,0,0,1,25,12.88,6,6,0,0,1,31.09,20Z"/>
+                                        <path d="M25,1.5A23.5,23.5,0,1,0,48.5,25,23.5,23.5,0,0,0,25,1.5Zm0,44.37A22.33,22.33,0,0,1,12.68,42.2V36.84c0-2.81,2.72-5.09,6.07-5.1l12.48.05h0c3.36,0,6.09,2.29,6.09,5.1V42.2A22.33,22.33,0,0,1,25,45.87Zm14.75-5.54V36.79h0c-.06-3.82-3.71-6.92-8.26-7h0L18.77,29.7h-.2c-4.56.09-8.23,3.17-8.31,7h0v3.62A20.44,20.44,0,0,1,3.25,25h0C3.25,13.48,13,4.13,25,4.13S46.75,13.48,46.75,25h0A20.44,20.44,0,0,1,39.75,40.33Z"/>
+                                    </g>
+                                </symbol>
+                            </svg>
+                            <svg class="user_profile" style="fill: white;" width="32px" height="32px">
+                                <use href="#svg-top5"></use>
+                            </svg>
+                            <svg display="none">
+                                <symbol id="downemp" viewBox="0 0 24 24">
+                                    <g>
+                                        <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
+                                    </g>
+                                </symbol>
+                            </svg>
+                            <svg class="user_profile2" style="fill: white;" width="23px" height="23px">
+                                <use href="#downemp"></use>
+                            </svg>
+                            <div class="personal_areaa">
+                                <div style="position:relative;">
+                                    <asp:Label ID="Label1" runat="server" Text="Label" CssClass="emp"></asp:Label>
+                                </div>
+                                <asp:Button ID="Button_vihod" runat="server" CssClass="redk-btn" Text="Выход" OnClick="Button_vihod_Click" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+                        <%-- ОСНОВНОЙ КОНТЕНТ --%>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+
+            <%-- ФУТЕР --%>
+            <div class="empty"></div>
+            <footer id="kos4" class="footer" style="display:none" visible="false">
+                <div class="footer1">
+                    <div class="footer-text">
+                        <p>
+                            © <asp:Label ID="Label2" Visible="false" runat="server" Text=""></asp:Label>
+                            Государственное бюджетное учреждение города Москвы
+                            <br />
+                            «Управление спортивными объектами» Департамента Москвы
+                        </p>
+                    </div>
+                    <div class="footer-logo">
+                        <a href="https://www.mos.ru/moskomsport/">
+                            <asp:Image runat="server" Width="110" ID="imagedep" src="/Logo/Департамент.svg" />
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </form>
+
+    <script>
+        function pageLoad(sender, args) {
+            var sliderClasses = ['test', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7'];
+
+            for (var c = 0; c < sliderClasses.length; c++) {
+                var cls = sliderClasses[c];
+                var elements = document.getElementsByClassName(cls);
+                if (elements.length === 0) continue;
+
+                for (var i = 0; i < elements.length; i++) {
+                    (function (slider) {
+                        let isDown = false;
+                        let startX;
+                        let scrollLeft;
+
+                        slider.addEventListener('mousedown', (e) => {
+                            isDown = true;
+                            slider.classList.add('active');
+                            startX = e.pageX - slider.offsetLeft;
+                            scrollLeft = slider.scrollLeft;
+                        });
+
+                        slider.addEventListener('mouseleave', () => {
+                            isDown = false;
+                            slider.classList.remove('active');
+                        });
+
+                        slider.addEventListener('mouseup', () => {
+                            isDown = false;
+                            slider.classList.remove('active');
+                        });
+
+                        slider.addEventListener('mousemove', (e) => {
+                            if (!isDown) return;
+                            e.preventDefault();
+                            const x = e.pageX - slider.offsetLeft;
+                            const walk = (x - startX) * 2;
+                            slider.scrollLeft = scrollLeft - walk;
+                        });
+                    })(elements[i]);
+                }
+            }
+        }
+    </script>
+
+    <script>
+        window.onload = function () {
+            document.body.classList.add('loaded_hiding');
+            window.setTimeout(function () {
+                document.body.classList.add('loaded');
+                document.body.classList.remove('loaded_hiding');
+            }, 500);
+        }
+    </script>
+</body>
+</html>

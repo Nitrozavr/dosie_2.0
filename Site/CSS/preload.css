@@ -1,0 +1,51 @@
+﻿body {
+    margin: 0;
+}
+
+.preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    background: #fff;
+    z-index: 1001;
+}
+
+.preloader__image {
+    position: relative;
+    margin:auto;
+    top:40%;
+    width: 200px;
+    height: 200px;
+    background: url('/Logo/preload.gif') no-repeat 50% 50%;
+    /*расположение (url) изображения gif и др. параметры*/
+}
+
+.loaded_hiding .preloader {
+    transition: 0.3s opacity;
+    opacity: 0;
+}
+
+.loaded .preloader {
+    display: none;
+}
+
+/* ============================================================
+   Адаптивность прелоадера
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .preloader__image {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .preloader__image {
+        width: 100px;
+        height: 100px;
+    }
+}
